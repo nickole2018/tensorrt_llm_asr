@@ -451,7 +451,7 @@ class TritonPythonModel:
         device = "cuda"
         device_id = args["model_instance_device_id"]
         self.device = f"{device}:{device_id}"
-        self.tokenizer = AutoTokenizer.from_pretrained("/mnt/cfs1/asr/users/dengliping/projects/LLM-ASR/resources/models/Qwen/Qwen2-7B-Instruct")
+        self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
         self.tokenizer.padding_side = "left"
         self.llm = AutoModelForCausalLM.from_pretrained(model_dir, torch_dtype=self.dtype).to(self.device).eval()
         self.llm_generation = LLMGeneration(self.llm.config, self.llm, self.device)
